@@ -84,7 +84,7 @@ Check out the robot implementing the 2 controllers: [Video Link](https://youtu.b
 
 
 # Future Work
- - \textbf{Wheel Encoders}: Add encoders to enable position control and full state feedback ($x, \dot{x}$).
- - \textbf{Kalman Filter}: Replace the Complementary Filter with a Kalman Filter for optimal noise rejection.
- - \textbf{LQR}: Implement a Linear Quadratic Regulator to optimize the trade-off between error and energy consumption.
- - \textbf{Embedded Control}: Switch to an ESP32 to run algorithms directly on-chip, eliminating USB latency and enabling loop rates >100 Hz.
+ - textbf{Wheel Encoders}: Add encoders to enable position control and full state feedback ($x, \dot{x}$).
+ - textbf{Kalman Filter}: Replace the Complementary Filter with a Kalman Filter for optimal noise rejection.
+ - textbf{LQR}: Implement a Linear Quadratic Regulator to optimize the trade-off between error and energy consumption.
+ - textbf{Embedded Control}: Switch to an ESP32 to run algorithms directly on-chip, eliminating USB latency and enabling loop rates >100 Hz.
