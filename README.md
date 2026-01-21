@@ -16,7 +16,11 @@ The robot chassis is constructed from laser-cut wood in a dual-plate configurati
 The robot is modeled as a linear system around the upright equilibrium point. Since the robot lacks wheel encoders, the design uses a 2-state model focusing exclusively on Attitude Control.State Vector: $x = [\theta, \dot{\theta}]^T$ (Tilt Angle, Angular Velocity)6666.Control Law: $u = -Kx$7.Gain Calculation: The feedback gain matrix $K = [k_{\theta}, k_{\dot{\theta}}]$ is computed using the Pole Placement method in LabVIEW to place the system poles in the stable Left Half Plane.
 
 ## PID Controller Design
-A classical PID controller operates on the error signal defined as the difference between the desired setpoint ($\theta_{set}$) and the measured angle ($\theta_{measured}$).Error: $e(t) = \theta_{set} - \theta(t)$9.Control Law: $u(t) = K_p e(t) + K_i \int e(t)dt + K_d \frac{de(t)}{dt}$10.Implementation: Parallel branches for Proportional, Integral, and Derivative terms are summed to generate the final PWM signal11.
+A classical PID controller operates on the error signal defined as the difference between the desired setpoint ($\theta_{set}$) and the measured angle ($\theta_{measured}$).
+
+- Error: $e(t) = \theta_{set} - \theta(t)$.
+- Control Law: $u(t) = K_p e(t) + K_i \int e(t)dt + K_d \frac{de(t)}{dt}$.
+- Implementation: Parallel branches for Proportional, Integral, and Derivative terms are summed to generate the final PWM signal.
 
 # Sensing, Calibration, and Feedback
 ## Sensor Integration
