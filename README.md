@@ -41,7 +41,7 @@ $$\theta(t) = 0.98 \cdot (\theta(t-1) + \omega_{gyro} \cdot dt) + 0.02 \cdot \th
 This filter assigns 98% of its weight to the gyroscope for short-term responsiveness and 2% to the accelerometer to correct drift.
 
 ## Sensor Calibration
-A separate calibration VI is used to calculate the gyroscope offset. The robot is held vertically, and 500 samples are averaged to find the bias, which is then subtracted from the raw readings during operation
+A separate calibration VI is used to calculate the gyroscope offset. The robot is held vertically, and samples are averaged to find the bias, which is then subtracted from the raw readings during operation
 
 ![alt text](https://github.com/omarbadr20/2-Wheeled-Self-Balancing-Robot/blob/main/Related%20Media/Calibration_Snippet.png)
 
