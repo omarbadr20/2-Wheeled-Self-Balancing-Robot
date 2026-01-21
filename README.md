@@ -52,11 +52,15 @@ The State-Feedback Control Loop runs on the host PC.
 2. State Construction: The state vector $x$ is formed using the filtered angle $\theta$ and the derived rate $\dot{\theta}$.
 3. Feedback Computation: The vector is multiplied by the gain matrix $K$ and summed to produce the control effort $u$.
 
+![alt text](https://github.com/omarbadr20/2-Wheeled-Self-Balancing-Robot/blob/main/Related%20Media/2_State_Modelling_Snippet.png)
+
+
 ## PID Implementation
 The PID logic is built using standard LabVIEW numeric blocks.
 1. Error Calculation: The measured angle is subtracted from the user-defined setpoint.
 2. PID Processing: The error is distributed to parallel P, I, and D branches.
-3. Output: The summed output is mapped to a PWM duty cycle for the motors. 
+3. Output: The summed output is mapped to a PWM duty cycle for the motors.
+![alt text](https://github.com/omarbadr20/2-Wheeled-Self-Balancing-Robot/blob/main/Related%20Media/PID_Modelling_Snippet.png)
 
 # Results And Analysis
 ## Steps to Run
