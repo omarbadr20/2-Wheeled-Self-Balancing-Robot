@@ -13,7 +13,10 @@ The robot chassis is constructed from laser-cut wood in a dual-plate configurati
 
 # Controllers' Design
 ## State-Space Controller Design
-The robot is modeled as a linear system around the upright equilibrium point. Since the robot lacks wheel encoders, the design uses a 2-state model focusing exclusively on Attitude Control.State Vector: $x = [\theta, \dot{\theta}]^T$ (Tilt Angle, Angular Velocity)6666.Control Law: $u = -Kx$7.Gain Calculation: The feedback gain matrix $K = [k_{\theta}, k_{\dot{\theta}}]$ is computed using the Pole Placement method in LabVIEW to place the system poles in the stable Left Half Plane.
+The robot is modeled as a linear system around the upright equilibrium point. Since the robot lacks wheel encoders, the design uses a 2-state model focusing exclusively on Attitude Control.
+- State Vector: $x = [\theta, \dot{\theta}]^T$ (Tilt Angle, Angular Velocity).
+- Control Law: $u = -Kx$.
+- Gain Calculation: The feedback gain matrix $K = [k_{\theta}, k_{\dot{\theta}}]$ is computed using the Pole Placement method in LabVIEW to place the system poles in the stable Left Half Plane.
 
 ## PID Controller Design
 A classical PID controller operates on the error signal defined as the difference between the desired setpoint ($\theta_{set}$) and the measured angle ($\theta_{measured}$).
@@ -26,17 +29,17 @@ A classical PID controller operates on the error signal defined as the differenc
 ## Sensor Integration
 The system uses an MPU-6500 IMU to determine orientation:
 - Accelerometer: Calculates tilt ($\theta_{acc}$) using gravity projection but suffers from vibration.
-- Gyroscope: Measures angular velocity ($\omega$) but suffers from integration drift over time13.
+- Gyroscope: Measures angular velocity ($\omega$) but suffers from integration drift over time.
 
 ## Complementary Filter
 To fuse the sensor data, a digital Complementary Filter is implemented in LabVIEW. It combines the stable (but noisy) accelerometer data with the responsive (but drifting) gyroscope integration:
 
 $$\theta(t) = 0.98 \cdot (\theta(t-1) + \omega_{gyro} \cdot dt) + 0.02 \cdot \theta_{acc}$$
 
-This filter places 98% weight on the gyroscope for short-term responsiveness and 2% on the accelerometer to correct drift.
+This filter assigns 98% of its weight to the gyroscope for short-term responsiveness and 2% to the accelerometer to correct drift.
 
 ## Sensor Calibration
-A separate calibration VI is used to calculate the gyroscope offset. The robot is held vertically, and 500 samples are averaged to find the bias, which is then subtracted from raw readings during operation
+A separate calibration VI is used to calculate the gyroscope offset. The robot is held vertically, and 500 samples are averaged to find the bias, which is then subtracted from the raw readings during operation
 
 ![alt text](https://github.com/omarbadr20/2-Wheeled-Self-Balancing-Robot/blob/main/Related%20Media/Calibration_Snippet.png)
 
@@ -56,8 +59,8 @@ The PID logic is built using standard LabVIEW numeric blocks.
 # Results And Analysis
 ## Steps to Run
 1. Calibrate: Run the calibration VI to determine the Gyro offset (essential for each power cycle).
-2. Set Parameters: Input offset and desired setpoint
-3. Adjust Gains according to your system ($K_p, K_i, K_d$ or $K_\theta, K_{\dot{\theta}}$)
+2. Set Parameters: Input offset and desired setpoint.
+3. Adjust Gains according to your system ($K_p, K_i, K_d$ or $K_\theta, K_{\dot{\theta}}$).
 
 ## Summary of Results
 State-Space vs. PID:
