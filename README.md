@@ -34,7 +34,7 @@ This filter places 98% weight on the gyroscope for short-term responsiveness and
 ## Sensor Calibration
 A separate calibration VI is used to calculate the gyroscope offset. The robot is held vertically, and 500 samples are averaged to find the bias, which is then subtracted from raw readings during operation
 
-![alt text] (https://github.com/omarbadr20/2-Wheeled-Self-Balancing-Robot/blob/main/Related%20Media/Calibration_Snippet.png)
+![alt text](https://github.com/omarbadr20/2-Wheeled-Self-Balancing-Robot/blob/main/Related%20Media/Calibration_Snippet.png)
 
 # LabVIEW Implementation and Integration
 ## State-Feedback Implementation
