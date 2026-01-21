@@ -1,7 +1,9 @@
 # 2-Wheeled-Self-Balancing-Robot
-# System OverView
+# System Overview
 ## Purpose and Goal
-The primary objective of this project is to design and implement a stabilizing control system for a two-wheeled self-balancing robot. Theoretically modeled as an inverted pendulum on a cart, this system is inherently unstable; its center of mass is located above its pivot point, meaning it will naturally fall without active control1111.The goal of this project is to maintain a vertical pitch angle ($\theta \approx 0^\circ$) by applying corrective torque to the wheels in the direction of the fall2. This project implements and compares two distinct control strategies—PID Control and State-Space Control—using a Hardware-in-the-Loop (HIL) architecture with National Instruments LabVIEW as the controller and an Arduino Nano as the data acquisition interface3333.
+The primary objective of this project is to design and implement a stabilizing control system for a two-wheeled self-balancing robot. Theoretically modelled as an inverted pendulum on a cart, this system is inherently unstable; its centre of mass is located above its pivot point, meaning it will naturally fall without active control.
+
+The goal of this project is to maintain a vertical pitch angle ($\theta \approx 0^\circ$) by applying corrective torque to the wheels in the direction of the fall. This project implements and compares two distinct control strategies—PID Control and State-Space Control—using National Instruments LabVIEW as the controller and an Arduino Nano as the data acquisition interface.
 
 ## Electrical Connections
 The system utilizes an Arduino Nano to interface with the sensors and actuators. Power is managed through separate paths for the high-current motor load and low-power logic electronics to prevent interference. Key components include an MPU-6500 IMU for sensing and an L298N Dual H-Bridge driver to control the two JGA25-370 DC geared motors.
@@ -13,7 +15,7 @@ The robot chassis is constructed from laser-cut wood in a dual-plate configurati
 
 # Controllers' Design
 ## State-Space Controller Design
-The robot is modeled as a linear system around the upright equilibrium point. Since the robot lacks wheel encoders, the design uses a 2-state model focusing exclusively on Attitude Control.
+The robot is modelled as a linear system around the upright equilibrium point. Since the robot lacks wheel encoders, the design uses a 2-state model focusing exclusively on Attitude Control.
 - State Vector: $x = [\theta, \dot{\theta}]^T$ (Tilt Angle, Angular Velocity).
 - Control Law: $u = -Kx$.
 - Gain Calculation: The feedback gain matrix $K = [k_{\theta}, k_{\dot{\theta}}]$ is computed using the Pole Placement method in LabVIEW to place the system poles in the stable Left Half Plane.
@@ -71,7 +73,7 @@ State-Space vs. PID:
 
 # Conclusion 
 
-This project successfully stabilized a two-wheeled robot using a remote Hardware-in-the-Loop architecture. By optimizing communication latency and implementing a robust state-space controller, the system overcame the inherent instability of the inverted pendulum model. The comparison highlighted the superior dynamic performance of modern control methods (State-Space) over classical ones (PID) for this specific application. For State Feedback, the project performed well on different surfaces (Porcelain Floor, Carpets, and Desktops) with the same system gains or with minimal tuning, while for the PID controller, the system required different tuned parameters for each surface and even then, the performance varied.
+This project successfully stabilized a two-wheeled robot using a remote Hardware-in-the-Loop architecture. By optimizing communication latency and implementing a robust state-space controller, the system overcame the inherent instability of the inverted pendulum model. The comparison highlighted the superior dynamic performance of modern control methods (State-Space) over classical ones (PID) for this specific application. For State Feedback, the project performed well on different surfaces (Porcelain Floor, Carpets, and Desktops) with the same system gains or with minimal tuning, while for the PID controller, the system required different tuned parameters for each surface, and even then, the performance varied.
 
 # Demo
 Check out the robot implementing the 2 controllers: [Video Link](https://youtu.be/8AiDUAj7NyE)
@@ -80,5 +82,5 @@ Check out the robot implementing the 2 controllers: [Video Link](https://youtu.b
 # Future Work
  - Wheel Encoders: Add encoders to enable position control and full state feedback ($x, \dot{x}$).
  - Kalman Filter: Replace the Complementary Filter with a Kalman Filter for optimal noise rejection.
- - LQR: Implement a Linear Quadratic Regulator to mathematically optimize the trade-off between error and energy consumption.
+ - LQR: Implement a Linear Quadratic Regulator to optimize the trade-off between error and energy consumption.
  - Embedded Control: Switch to an ESP32 to run algorithms directly on-chip, eliminating USB latency and enabling loop rates >100 Hz.
