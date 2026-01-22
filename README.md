@@ -1,9 +1,7 @@
 # 2-Wheeled-Self-Balancing-Robot
 # System Overview
 ## Purpose and Goal
-The primary objective of this project is to design and implement a stabilizing control system for a two-wheeled self-balancing robot. Theoretically modelled as an inverted pendulum on a cart, this system is inherently unstable; its centre of mass is located above its pivot point, meaning it will naturally fall without active control.
-
-The goal of this project is to maintain a vertical pitch angle ($\theta \approx 0^\circ$) by applying corrective torque to the wheels in the direction of the fall. This project implements and compares two distinct control strategies—PID Control and State-Space Control—using National Instruments LabVIEW as the controller and an Arduino Nano as the data acquisition interface.
+The objective of this project is to design and implement a stabilizing control system for a two-wheeled self-balancing robot. Theoretically modelled as an inverted pendulum on a cart. The goal of this project is to maintain a vertical pitch angle ($\theta \approx 0^\circ$) by applying corrective torque to the wheels in the direction of the fall. This project implements and compares two distinct control strategies—PID Control and State-Space Control (State-Feedback) —using NI LabVIEW as the controller and an Arduino Nano as the data acquisition interface.
 
 ## Electrical Connections
 The system utilizes an Arduino Nano to interface with the sensors and actuators. Power is managed through separate paths for the high-current motor load and low-power logic electronics to prevent interference. Key components include an MPU-6500 IMU for sensing and an L298N Dual H-Bridge driver to control the two JGA25-370 DC geared motors.
@@ -15,7 +13,7 @@ The robot chassis is constructed from laser-cut wood in a dual-plate configurati
 
 # Controllers' Design
 ## State-Space Controller Design
-The robot is modelled as a linear system around the upright equilibrium point. Since the robot lacks wheel encoders, the design uses a 2-state model focusing exclusively on Attitude Control.
+The robot is modelled as a linear system around the upright equilibrium point. Since the robot lacks wheel encoders, the design uses a 2-state model focusing exclusively on Behaviour Control (Robot maintaining upright position).
 - State Vector: $x = [\theta, \dot{\theta}]^T$ (Tilt Angle, Angular Velocity).
 - Control Law: $u = -Kx$.
 - Gain Calculation: The feedback gain matrix $K = [k_{\theta}, k_{\dot{\theta}}]$ is computed using the Pole Placement method in LabVIEW to place the system poles in the stable Left Half Plane.
