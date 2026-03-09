@@ -8,7 +8,7 @@ The system utilizes an Arduino Nano to interface with the sensors and actuators.
 ![alt text](https://github.com/omarbadr20/2-Wheeled-Self-Balancing-Robot/blob/main/Related%20Media/self_balancing_connections.jpeg)
 
 ## Mechanical Structure
-The robot chassis is constructed from laser-cut wood in a dual-plate configuration. To increase the system's rotational inertia and slow down its falling dynamics, the heavy Li-Ion battery pack is mounted on the top plate, raising the Center of Mass (CoM). The motors are directly coupled to the wheels to minimize backlash.
+The robot chassis is constructed from laser-cut wood in a dual-plate configuration. The motors are directly coupled to the wheels to minimize backlash and ensure precise torque transmission, which is critical for maintaining balance. To increase the system's rotational inertia and slow down the falling dynamics, the heavy Li-Ion battery pack is mounted on the top plate, intentionally raising the Center of Mass (CoM). This elevated mass allows the robot to exhibit a larger sweeping action during motion, meaning the body swings more gradually when the robot begins to tilt. The slower and wider tilt motion gives the control algorithm more time to detect deviations from the vertical position and apply corrective wheel movements. As a result, placing the battery above improves the controllability and stability of the self-balancing system by making the balancing dynamics easier to regulate.
 ![alt text](https://github.com/omarbadr20/2-Wheeled-Self-Balancing-Robot/blob/main/Related%20Media/Robot_Structure.jpeg)
 
 # Controllers' Design
